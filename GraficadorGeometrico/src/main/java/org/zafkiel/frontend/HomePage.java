@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 public class HomePage extends JFrame {
     public JPanel panelHomePage;
     private JButton salirButton;
+    private JTabbedPane tabbedPane1;
 
     public HomePage() {
         salirButton.addActionListener(new ActionListener() {
