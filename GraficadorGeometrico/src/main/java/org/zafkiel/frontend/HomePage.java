@@ -8,6 +8,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
+import java.util.List;
 
 public class HomePage extends JFrame {
     public JPanel panelHomePage;
@@ -23,6 +24,7 @@ public class HomePage extends JFrame {
     private JButton botonNuevoArchivo;
     private JTextPane textPaneReporteLexico;
     private JTextPane textPaneReporteSintactico;
+    private JTextPane textPaneReporteErrores;
 
     public HomePage() {
         salirButton.addActionListener(new ActionListener() {
@@ -73,21 +75,34 @@ public class HomePage extends JFrame {
         botonAnalizar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null,"Se a analizado el texto correctamente.\n"+
+                "Por favor revise el area de ANALIZADORES y REPORTES por favor.\n"+
+                        ":D");
                 try {
-
                     String fileName = textPaneInicio.getText();
-
                     BufferedReader buffer = new BufferedReader(new StringReader(fileName));
                     scanner customLexer = new scanner(buffer);
                     textPaneReporteLexico.setText("");
+                    textPaneReporteErrores.setText("");
                     while(true) {
 
                         Token token = customLexer.yylex();
 
                         if (token == null)
                             break;
-                        textPaneReporteLexico.setText(textPaneReporteLexico.getText()+token.toString()+"\n");
-
+                    }
+                    List<String> errores = scanner.getErrores();
+                    if (!errores.isEmpty()) {
+                        for (String error : errores) {
+                            textPaneReporteErrores.setText(textPaneReporteErrores.getText()+error+"\n");
+                        }
+                    }
+                    textPaneReporteLexico.setText("");
+                    List<String> lexicos = scanner.getLexicos();
+                    if (!lexicos.isEmpty()) {
+                        for (String lexico : lexicos) {
+                            textPaneReporteLexico.setText(textPaneReporteLexico.getText()+lexico+"\n");
+                        }
                     }
                 }
                 catch (Exception ex) {

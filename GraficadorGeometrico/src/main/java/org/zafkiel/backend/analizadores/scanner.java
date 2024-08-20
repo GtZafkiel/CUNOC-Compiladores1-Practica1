@@ -6,6 +6,8 @@
 //---> Paquetes, importaciones
 package org.zafkiel.backend.analizadores;
 import org.zafkiel.backend.analizadores.Token;
+import java.util.List;
+import java.util.ArrayList;
 /*---   2da Area: Opciones y Declaraciones   ---*/
 
 @SuppressWarnings("fallthrough")
@@ -303,6 +305,15 @@ public class scanner {
 
   /* user code: */
     private int counter;
+    private int counter2;
+    private static List<String> lexicos = new ArrayList<>();
+    public static List<String> getLexicos() {
+        return lexicos;
+    }
+    private static List<String> errores = new ArrayList<>();
+    public static List<String> getErrores() {
+        return errores;
+    }
 
 
   /**
@@ -312,6 +323,10 @@ public class scanner {
    */
   public scanner(java.io.Reader in) {
       counter = 0;
+    counter2 = 0;
+    yyline = 1;
+    yycolumn = 1;
+    yychar = 1;
     this.zzReader = in;
   }
 
@@ -732,6 +747,11 @@ public class scanner {
         switch (zzAction < 0 ? zzAction : ZZ_ACTION[zzAction]) {
           case 1:
             { counter++;
+    counter2++;
+    lexicos.add("---->   Contador: " +counter+ "                    Lexema: " + yytext() + "                   Keyword: " + "ERROR" +
+                "                   Linea: " + yyline +"                   Columna: " + yycolumn + "                   Caracter: " + yychar);
+    errores.add("---->   Contador: " +counter2+ "                    Lexema: " + yytext() + "                   Keyword: " + "ERROR - Simbolo no existe en el lenguaje" +
+                "                   Linea: " + yyline +"                   Columna: " + yycolumn + "                   Caracter: " + yychar);
     return new Token(counter, yytext(), "ERROR", yyline, yycolumn, yychar);
             }
           // fall through
@@ -748,162 +768,216 @@ public class scanner {
           case 33: break;
           case 4:
             { counter++;
+    lexicos.add("---->   Contador: " +counter+ "                    Lexema: " + yytext() + "                   Keyword: " + "Parentesis_Abierto" +
+                "                   Linea: " + yyline +"                   Columna: " + yycolumn + "                   Caracter: " + yychar);
     return new Token(counter, yytext(), "Parentesis_Abierto", yyline, yycolumn, yychar);
             }
           // fall through
           case 34: break;
           case 5:
             { counter++;
+    lexicos.add("---->   Contador: " +counter+ "                    Lexema: " + yytext() + "                   Keyword: " + "Parentesis_Cerrado" +
+                "                   Linea: " + yyline +"                   Columna: " + yycolumn + "                   Caracter: " + yychar);
     return new Token(counter, yytext(), "Parentesis_Cerrado", yyline, yycolumn, yychar);
             }
           // fall through
           case 35: break;
           case 6:
             { counter++;
+    lexicos.add("---->   Contador: " +counter+ "                    Lexema: " + yytext() + "                   Keyword: " + "Multiplicador" +
+                "                   Linea: " + yyline +"                   Columna: " + yycolumn + "                   Caracter: " + yychar);
     return new Token(counter, yytext(), "Multiplicador", yyline, yycolumn, yychar);
             }
           // fall through
           case 36: break;
           case 7:
             { counter++;
+    lexicos.add("---->   Contador: " +counter+ "                    Lexema: " + yytext() + "                   Keyword: " + "Mas" +
+                "                   Linea: " + yyline +"                   Columna: " + yycolumn + "                   Caracter: " + yychar);
     return new Token(counter, yytext(), "Mas", yyline, yycolumn, yychar);
             }
           // fall through
           case 37: break;
           case 8:
             { counter++;
+    lexicos.add("---->   Contador: " +counter+ "                    Lexema: " + yytext() + "                   Keyword: " + "Coma" +
+                "                   Linea: " + yyline +"                   Columna: " + yycolumn + "                   Caracter: " + yychar);
     return new Token(counter, yytext(), "Coma", yyline, yycolumn, yychar);
             }
           // fall through
           case 38: break;
           case 9:
             { counter++;
+    lexicos.add("---->   Contador: " +counter+ "                    Lexema: " + yytext() + "                   Keyword: " + "Menos" +
+                "                   Linea: " + yyline +"                   Columna: " + yycolumn + "                   Caracter: " + yychar);
     return new Token(counter, yytext(), "Menos", yyline, yycolumn, yychar);
             }
           // fall through
           case 39: break;
           case 10:
             { counter++;
+    lexicos.add("---->   Contador: " +counter+ "                    Lexema: " + yytext() + "                   Keyword: " + "Divisor" +
+                "                   Linea: " + yyline +"                   Columna: " + yycolumn + "                   Caracter: " + yychar);
     return new Token(counter, yytext(), "Divisor", yyline, yycolumn, yychar);
             }
           // fall through
           case 40: break;
           case 11:
             { counter++;
+    lexicos.add("---->   Contador: " +counter+ "                    Lexema: " + yytext() + "                   Keyword: " + "Entero" +
+                "                   Linea: " + yyline +"                   Columna: " + yycolumn + "                   Caracter: " + yychar);
     return new Token(counter, yytext(), "Entero", yyline, yycolumn, yychar);
             }
           // fall through
           case 41: break;
           case 12:
             { counter++;
+    lexicos.add("---->   Contador: " +counter+ "                    Lexema: " + yytext() + "                   Keyword: " + "Identificador" +
+                "                   Linea: " + yyline +"                   Columna: " + yycolumn + "                   Caracter: " + yychar);
     return new Token(counter, yytext(), "Identificador", yyline, yycolumn, yychar);
             }
           // fall through
           case 42: break;
           case 13:
             { counter++;
+    lexicos.add("---->   Contador: " +counter+ "                    Lexema: " + yytext() + "                   Keyword: " + "Decimal" +
+                "                   Linea: " + yyline +"                   Columna: " + yycolumn + "                   Caracter: " + yychar);
     return new Token(counter, yytext(), "Decimal", yyline, yycolumn, yychar);
             }
           // fall through
           case 43: break;
           case 14:
             { counter++;
+    lexicos.add("---->   Contador: " +counter+ "                    Lexema: " + yytext() + "                   Keyword: " + "Azul" +
+                "                   Linea: " + yyline +"                   Columna: " + yycolumn + "                   Caracter: " + yychar);
     return new Token(counter, yytext(), "Azul", yyline, yycolumn, yychar);
             }
           // fall through
           case 44: break;
           case 15:
             { counter++;
+    lexicos.add("---->   Contador: " +counter+ "                    Lexema: " + yytext() + "                   Keyword: " + "Cafe" +
+                "                   Linea: " + yyline +"                   Columna: " + yycolumn + "                   Caracter: " + yychar);
     return new Token(counter, yytext(), "Cafe", yyline, yycolumn, yychar);
             }
           // fall through
           case 45: break;
           case 16:
             { counter++;
+    lexicos.add("---->   Contador: " +counter+ "                    Lexema: " + yytext() + "                   Keyword: " + "Rojo" +
+                "                   Linea: " + yyline +"                   Columna: " + yycolumn + "                   Caracter: " + yychar);
     return new Token(counter, yytext(), "Rojo", yyline, yycolumn, yychar);
             }
           // fall through
           case 46: break;
           case 17:
             { counter++;
+    lexicos.add("---->   Contador: " +counter+ "                    Lexema: " + yytext() + "                   Keyword: " + "Curva" +
+                "                   Linea: " + yyline +"                   Columna: " + yycolumn + "                   Caracter: " + yychar);
     return new Token(counter, yytext(), "Curva", yyline, yycolumn, yychar);
             }
           // fall through
           case 47: break;
           case 18:
             { counter++;
+    lexicos.add("---->   Contador: " +counter+ "                    Lexema: " + yytext() + "                   Keyword: " + "Linea" +
+                "                   Linea: " + yyline +"                   Columna: " + yycolumn + "                   Caracter: " + yychar);
     return new Token(counter, yytext(), "Linea", yyline, yycolumn, yychar);
             }
           // fall through
           case 48: break;
           case 19:
             { counter++;
+    lexicos.add("---->   Contador: " +counter+ "                    Lexema: " + yytext() + "                   Keyword: " + "Negro" +
+                "                   Linea: " + yyline +"                   Columna: " + yycolumn + "                   Caracter: " + yychar);
     return new Token(counter, yytext(), "Negro", yyline, yycolumn, yychar);
             }
           // fall through
           case 49: break;
           case 20:
             { counter++;
+    lexicos.add("---->   Contador: " +counter+ "                    Lexema: " + yytext() + "                   Keyword: " + "Verde" +
+                "                   Linea: " + yyline +"                   Columna: " + yycolumn + "                   Caracter: " + yychar);
     return new Token(counter, yytext(), "Verde", yyline, yycolumn, yychar);
             }
           // fall through
           case 50: break;
           case 21:
             { counter++;
+    lexicos.add("---->   Contador: " +counter+ "                    Lexema: " + yytext() + "                   Keyword: " + "Animar" +
+                "                   Linea: " + yyline +"                   Columna: " + yycolumn + "                   Caracter: " + yychar);
     return new Token(counter, yytext(), "Animar", yyline, yycolumn, yychar);
             }
           // fall through
           case 51: break;
           case 22:
             { counter++;
+    lexicos.add("---->   Contador: " +counter+ "                    Lexema: " + yytext() + "                   Keyword: " + "Blanco" +
+                "                   Linea: " + yyline +"                   Columna: " + yycolumn + "                   Caracter: " + yychar);
     return new Token(counter, yytext(), "Blanco", yyline, yycolumn, yychar);
             }
           // fall through
           case 52: break;
           case 23:
             { counter++;
+    lexicos.add("---->   Contador: " +counter+ "                    Lexema: " + yytext() + "                   Keyword: " + "Morado" +
+                "                   Linea: " + yyline +"                   Columna: " + yycolumn + "                   Caracter: " + yychar);
     return new Token(counter, yytext(), "Morado", yyline, yycolumn, yychar);
             }
           // fall through
           case 53: break;
           case 24:
             { counter++;
+    lexicos.add("---->   Contador: " +counter+ "                    Lexema: " + yytext() + "                   Keyword: " + "Rosado" +
+                "                   Linea: " + yyline +"                   Columna: " + yycolumn + "                   Caracter: " + yychar);
     return new Token(counter, yytext(), "Rosado", yyline, yycolumn, yychar);
             }
           // fall through
           case 54: break;
           case 25:
             { counter++;
+    lexicos.add("---->   Contador: " +counter+ "                    Lexema: " + yytext() + "                   Keyword: " + "Circulo" +
+                "                   Linea: " + yyline +"                   Columna: " + yycolumn + "                   Caracter: " + yychar);
     return new Token(counter, yytext(), "Circulo", yyline, yycolumn, yychar);
             }
           // fall through
           case 55: break;
           case 26:
             { counter++;
+    lexicos.add("---->   Contador: " +counter+ "                    Lexema: " + yytext() + "                   Keyword: " + "Amarillo" +
+                "                   Linea: " + yyline +"                   Columna: " + yycolumn + "                   Caracter: " + yychar);
     return new Token(counter, yytext(), "Amarillo", yyline, yycolumn, yychar);
             }
           // fall through
           case 56: break;
           case 27:
             { counter++;
+    lexicos.add("---->   Contador: " +counter+ "                    Lexema: " + yytext() + "                   Keyword: " + "Cuadrado" +
+                "                   Linea: " + yyline +"                   Columna: " + yycolumn + "                   Caracter: " + yychar);
     return new Token(counter, yytext(), "Cuadrado", yyline, yycolumn, yychar);
             }
           // fall through
           case 57: break;
           case 28:
             { counter++;
+    lexicos.add("---->   Contador: " +counter+ "                    Lexema: " + yytext() + "                   Keyword: " + "Graficar" +
+                "                   Linea: " + yyline +"                   Columna: " + yycolumn + "                   Caracter: " + yychar);
     return new Token(counter, yytext(), "Graficar", yyline, yycolumn, yychar);
             }
           // fall through
           case 58: break;
           case 29:
             { counter++;
+    lexicos.add("---->   Contador: " +counter+ "                    Lexema: " + yytext() + "                   Keyword: " + "Poligono" +
+                "                   Linea: " + yyline +"                   Columna: " + yycolumn + "                   Caracter: " + yychar);
     return new Token(counter, yytext(), "Poligono", yyline, yycolumn, yychar);
             }
           // fall through
           case 59: break;
           case 30:
             { counter++;
+    lexicos.add("---->   Contador: " +counter+ "                    Lexema: " + yytext() + "                   Keyword: " + "Rectangulo" +
+                "                   Linea: " + yyline +"                   Columna: " + yycolumn + "                   Caracter: " + yychar);
     return new Token(counter, yytext(), "Rectangulo", yyline, yycolumn, yychar);
             }
           // fall through

@@ -16,8 +16,4 @@ public class Token {
         this.charNumber = charNumber;
     }
 
-    public String toString() {
-        return "---->   Contador: " + this.counter + "          Texto: " + this.text + "         Keyword: " + this.keyword +
-                "         Linea: " + this.lineNumber +"         Columna: " + this.columnNumber + "         Caracter: " + this.charNumber;
-    }
 }
