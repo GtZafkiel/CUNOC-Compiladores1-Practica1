@@ -1,13 +1,13 @@
 package org.zafkiel.frontend;
 
+import org.zafkiel.backend.analizadores.Token;
+import org.zafkiel.backend.analizadores.scanner;
+
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 
 public class HomePage extends JFrame {
     public JPanel panelHomePage;
@@ -19,6 +19,10 @@ public class HomePage extends JFrame {
     private JButton botonLimpiar;
     private JTextPane textPaneInicio;
     private JTextPane textPaneEstado;
+    private JButton botonGuardarArchivo;
+    private JButton botonNuevoArchivo;
+    private JTextPane textPaneReporteLexico;
+    private JTextPane textPaneReporteSintactico;
 
     public HomePage() {
         salirButton.addActionListener(new ActionListener() {
@@ -64,6 +68,30 @@ public class HomePage extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 textPaneInicio.setText("");
                 textPaneEstado.setText("");
+            }
+        });
+        botonAnalizar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+
+                    String fileName = textPaneInicio.getText();
+
+                    BufferedReader buffer = new BufferedReader(new StringReader(fileName));
+                    scanner customLexer = new scanner(buffer);
+                    textPaneReporteLexico.setText("");
+                    while(true) {
+
+                        Token token = customLexer.yylex();
+
+                        if (token == null)
+                            break;
+                        textPaneReporteLexico.setText(textPaneReporteLexico.getText()+token.toString()+"\n");
+
+                    }
+                }
+                catch (Exception ex) {
+                }
             }
         });
     }
