@@ -59,5 +59,12 @@ public class HomePage extends JFrame {
                 }
             }
         });
+        botonLimpiar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                textPaneInicio.setText("");
+                textPaneEstado.setText("");
+            }
+        });
     }
 }
