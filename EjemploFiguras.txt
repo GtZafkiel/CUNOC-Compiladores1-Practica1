@@ -1,0 +1,24 @@
+graficar circulo (cir1, 5+5, 5+5+5, 5+5+5+5, Rojo)
+graficar circulo (cir2, 5-5, 5-5+5, 5-5+5+5, Dorado)
+graficar circulo (cir3, 5*5, 5*5+5, 5*5+5+5, Verde)
+graficar circulo (cir4, 5/5, 5/5+5, 5/5+5+5, Azul)
+
+graficar cuadrado (cuadrado1, 5+5, 5+5+5, 5+5+5+5, Rojo)
+graficar cuadrado (cuadrado2, 5-5, 5-5+5, 5-5+5+5, Dorado)
+graficar cuadrado (cuadrado3, 5*5, 5*5+5, 5*5+5+5, Verde)
+graficar cuadrado (cuadrado4, 5/5, 5/5+5, 5/5+5+5, Azul)
+
+graficar rectangulo (rectangulo1, 5+5, 5+5+5, 5+5+5+5,1, Rojo)
+graficar rectangulo (rectangulo2, 5-5, 5-5+5, 5-5+5+5,2, Dorado)
+graficar rectangulo (rectangulo3, 5*5, 5*5+5, 5*5+5+5,3, Verde)
+graficar rectangulo (rectangulo4, 5/5, 5/5+5, 5/5+5+5,4, Azul)
+
+graficar linea (linea1, 5+5, 5+5+5, 5+5+5+5,(2+1)*2/3, Rojo)
+graficar LINEA (linea2, 5-5, 5-5+5, 5-5+5+5,2*2/3, Dorado)
+graficar Linea (linea3, 5*5, 5*5+5, 5*5+5+5,3*2/3, Verde)
+graficar linEa (linea4, 5/5, 5/5+5, 5/5+5+5,4*2/3, Azul)
+
+graficar poligono (poligono1, 5+5, 5+5+5, 5+5+5+5,(2+1)*2/3,(5-3)*1.5, Rojo)
+graficar poligono (poligono2, 5-5, 5-5+5, 5-5+5+5,2*2/3,4, Dorado)
+graficar poligono (poligono3, 5*5, 5*5+5, 5*5+5+5,3*2/3, 2,Verde)
+graficar poligono (poligono4, 5/5, 5/5+5, 5/5+5+5,4*2/3,1, Azul)
